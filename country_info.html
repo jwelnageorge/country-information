@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Country Information</title>
+		
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+		<script src="country_info.js"></script>
+		
+		<style>
+		table, th, td {
+                  border: 1px solid black;
+				  border-collapse:collapse;
+				  border-color:white;
+        }
+        body {
+                  background-color:purple;
+                  color:white;
+        }
+		ul{
+			float:left;
+		}
+		ul li:hover{
+				cursor:pointer;
+				text-decoration-line: underline;
+		 }
+		img{
+			height:100px;
+			width:100px;
+		}
+		</style>
+	</head>
+	<body>
+		<div ng-app="myApp" ng-controller="myCtrl">
+			<div>List of Countries</div>
+			
+			<ul>
+				<li ng-repeat="country in countries" ng-click="getCountryDetails(country.name);">
+					{{country.name}}
+				</li>
+			</ul>
+			
+			<table ng-show="hideData" >
+				<thead>
+					<tr>
+						<th>Flag</th>
+						<th>Capital</th>
+						<th>Region</th>
+						<th>Subregion</th>
+						<th>Population</th>
+					</tr>
+				</thead>
+				<tr ng-repeat="details in countryDetails">
+				    <td><img ng-src={{details.flag}} alt="{{details.name+'flag'}}"></img></td>
+					<td>{{details.capital}}</td>
+					<td>{{details.region}}</td>
+					<td>{{details.subregion}}</td>
+					<td>{{details.population}}</td>
+				</tr>
+			</table>
+			
+		</div>
+	</body>
+</html>
